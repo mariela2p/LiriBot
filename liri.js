@@ -1,10 +1,16 @@
 // variables
 
 var request = require("request");
+var keys = require("./keys.js");
+var twitter = require("twitter");
+var spotify = require('node-spotify-api');
 var command = process.argv [2]
 var userInput = process.argv [3];
 
-// Only possible commands for LIRI:
+
+// ======== Only possible commands for LIRI:
+
+
 switch (command){
 	case "my-tweets":
 		myTweets();
@@ -27,18 +33,54 @@ switch (command){
 					"Sorry, no more commands available at this moment." + "\r\n");
 
 }
-// Tweeter function:
+
+
+// ========== Tweeter function: ============
+
+
 function myTweets(){
-}	
-// Spotify function:
+
+ 	var client = new twitter({
+	  consumer_key: keys.twitterKeys.consumer_key,
+	  consumer_secret: keys.twitterKeys.consumer_secret,
+	  access_token_key: keys.twitterKeys.access_token_key,
+	  access_token_secret: keys.twitterKeys.access_token_secret
+	});
+
+	//var twitterUsername = userInput;
+
+	var params = {screen_name: "aFamousMe", count: 20};
+	
+	client.get('statuses/user_timeline', params, function(error, tweets, response) {
+  		if (!error) {
+
+    	console.log(tweets);
+  		}
+	});	
+}
+
+
+
+// ========== Spotify function: ==========
+
+
 function spotifyThisSong(){
 
 }
-// Movie function:
+
+
+
+// ========= Movie function: ===========
+
+
 function movieThis(){
 	var movieName = userInput;
 
 	var movieQueryUrl = "http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=trilogy";
+
+	if(!movieName){
+			movieName = "mr nobody";
+		}
 
 	request(movieQueryUrl, function(error, response, body){
 
@@ -54,15 +96,22 @@ function movieThis(){
 	   				"Language: " + JSON.parse(body).Language + "\r\n" + 
 	   				"Plot: " + JSON.parse(body).Plot + "\r\n" + 
 	   				"Actors: " + JSON.parse(body).Actors + "\r\n" + "\r\n" +
-	   				"------------------------------------------------------------" + "\r\n");
-
-	  
-	 }
+	   				"-----------------------------------------------------" + "\r\n");
+		}
+	else {
+			console.log("Error: "+ error);
+				return;
+			}
 	});
-}
+};
 
 
-// Do what it says function:
+
+// ======Do what it says function: =========
+
+
 function doWhatItSays(){
 
 }
+
+
