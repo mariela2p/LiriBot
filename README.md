@@ -51,5 +51,5 @@ LIRI is a _Language_ Interpretation and Recognition Interface, command line node
      * It should run `spotify-this-song` for "I Want it That Way," as follows the text in `random.txt`
      
 
-5. If a wrong command is typed, then the terminal/bash window shows the liat of commands that can be used.
+5. If a wrong command is typed, then the terminal/bash window shows the list of commands that can be used.
 
