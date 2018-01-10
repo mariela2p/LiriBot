@@ -3,9 +3,9 @@
 var request = require("request");
 var keys = require("./keys.js");
 var twitter = require("twitter");
-var spotify = require('node-spotify-api');
-var command = process.argv [2]
-var userInput = process.argv [3];
+var Spotify = require('node-spotify-api');
+var command = process.argv[2];
+var userInput = process.argv[3];
 
 
 // ======== Only possible commands for LIRI:
@@ -49,16 +49,30 @@ function myTweets(){
 
 	//var twitterUsername = userInput;
 
-	var params = {screen_name: "aFamousMe", count: 20};
 	
+
+	var params = {screen_name: 'aFamousMe', count: 20};
+	  
 	client.get('statuses/user_timeline', params, function(error, tweets, response) {
   		if (!error) {
 
-    	console.log(tweets);
-  		}
-	});	
-}
+  			console.log("\r\n" + "--------------------- My Tweets ---------------------" + "\r\n");
 
+  			for( var i = 1; i < tweets.length; i++){
+
+  				console.log( "Tweet #: " + i + ", " + "created:  " + tweets[i].created_at + "\r\n" +
+	   				 tweets[i].text + "\r\n" + "\r\n" +
+	   				"-----------------------------------------------------" + "\r\n");
+  			}
+  		}
+  		else {
+			console.log("Error: "+ error);
+				return;
+		}
+		
+	});	
+
+}
 
 
 // ========== Spotify function: ==========
@@ -66,7 +80,36 @@ function myTweets(){
 
 function spotifyThisSong(){
 
-}
+	var spotify = new Spotify({
+			id: keys.spotifyKeys.id,
+			secret: keys.spotifyKeys.secret
+		});
+
+		var songName = userInput;
+
+		if(!songName){
+			
+			songName = "The Sign";
+		}
+
+		var params = songName;
+
+		spotify.search({ type: 'track', query: params }, function(err, data) {
+
+			if (err) {
+				return console.log('Error: ' + err);
+			} else {
+				var spotifyResponce = "\r\n" + "-------------------- Here's the song you searched for: ---------------------" + "\r\n" +
+										"Song Name: " + params.toUpperCase() + "\r\n" + 
+										"Artist(s): " + data.tracks.items[0].album.artists[0].name + "\r\n" +
+										"Album: " + data.tracks.items[0].album.name + "\r\n" + 
+										"Spotify Link: " + data.tracks.items[0].album.external_urls.spotify + "\r\n" + 
+										"-----------------------------------------------------------------------------" + "\r\n";
+								
+				console.log(spotifyResponce);
+			}
+		});
+	}
 
 
 
@@ -74,21 +117,26 @@ function spotifyThisSong(){
 
 
 function movieThis(){
+
 	var movieName = userInput;
 
-	var movieQueryUrl = "http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=trilogy";
-
 	if(!movieName){
-			movieName = "mr nobody";
-		}
+
+		movieName = "mr nobody";
+	}
+
+	var params = movieName;
+
+	var movieQueryUrl = "http://www.omdbapi.com/?t=" + params + "&y=&plot=short&apikey=trilogy";
 
 	request(movieQueryUrl, function(error, response, body){
 
 	  
 	if (!error && response.statusCode === 200){
+
+
 	  
-	   console.log("\r\n" + "--------------LIRI BOT at your service-------------- " + "\r\n" + "\r\n" + 
-	   				"Title: " + JSON.parse(body).Title + "\r\n" +
+	  var movieResponse = "\r\n" + "--------------------- " + JSON.parse(body).Title + " ----------------------" + "\r\n" + 
 	   				"Year: " + JSON.parse(body).Year  + "\r\n" + 
 	   				"IMDB Rating: " + JSON.parse(body).Ratings[0].Value + "\r\n" + 
 	   				"Rotten Tomatoes Rating: " + JSON.parse(body).Ratings[1].Value + "\r\n" + 
@@ -96,14 +144,17 @@ function movieThis(){
 	   				"Language: " + JSON.parse(body).Language + "\r\n" + 
 	   				"Plot: " + JSON.parse(body).Plot + "\r\n" + 
 	   				"Actors: " + JSON.parse(body).Actors + "\r\n" + "\r\n" +
-	   				"-----------------------------------------------------" + "\r\n");
+	   				"-----------------------------------------------------" + "\r\n";
+	console.log(movieResponse);
+
 		}
+		
 	else {
 			console.log("Error: "+ error);
 				return;
 			}
 	});
-};
+}
 
 
 
