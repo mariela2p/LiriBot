@@ -1,12 +1,12 @@
 // variables
-
+var fs = require("fs");
 var request = require("request");
 var keys = require("./keys.js");
 var twitter = require("twitter");
 var Spotify = require('node-spotify-api');
 var command = process.argv[2];
 var userInput = process.argv[3];
-
+var data;
 
 // ======== Only possible commands for LIRI:
 
@@ -60,9 +60,13 @@ function myTweets(){
 
   			for( var i = 1; i < tweets.length; i++){
 
-  				console.log( "Tweet #: " + i + ", " + "created:  " + tweets[i].created_at + "\r\n" +
+  				var	tweetResponce = "Tweet #: " + i + ", " + "created:  " + tweets[i].created_at + "\r\n" +
 	   				 tweets[i].text + "\r\n" + "\r\n" +
-	   				"-----------------------------------------------------" + "\r\n");
+	   				"-----------------------------------------------------" + "\r\n";
+
+	   			console.log(tweetResponce);
+
+				//appendToFile(tweetResponce);
   			}
   		}
   		else {
@@ -107,6 +111,8 @@ function spotifyThisSong(){
 										"-----------------------------------------------------------------------------" + "\r\n";
 								
 				console.log(spotifyResponce);
+
+				appendToFile(spotifyResponce);
 			}
 		});
 	}
@@ -136,7 +142,7 @@ function movieThis(){
 
 
 	  
-	  var movieResponse = "\r\n" + "--------------------- " + JSON.parse(body).Title + " ----------------------" + "\r\n" + 
+	  		var movieResponse = "\r\n" + "--------------------- " + JSON.parse(body).Title + " ----------------------" + "\r\n" + 
 	   				"Year: " + JSON.parse(body).Year  + "\r\n" + 
 	   				"IMDB Rating: " + JSON.parse(body).Ratings[0].Value + "\r\n" + 
 	   				"Rotten Tomatoes Rating: " + JSON.parse(body).Ratings[1].Value + "\r\n" + 
@@ -145,7 +151,10 @@ function movieThis(){
 	   				"Plot: " + JSON.parse(body).Plot + "\r\n" + 
 	   				"Actors: " + JSON.parse(body).Actors + "\r\n" + "\r\n" +
 	   				"-----------------------------------------------------" + "\r\n";
-	console.log(movieResponse);
+
+			console.log(movieResponse);
+
+			appendToFile(movieResponse);
 
 		}
 		
@@ -163,7 +172,7 @@ function movieThis(){
 
 function doWhatItSays(){
 
-var fs = require("fs");
+
 
 fs.readFile("random.txt", "utf8", function(error, data){
 			if (!error) {
@@ -185,4 +194,23 @@ fs.readFile("random.txt", "utf8", function(error, data){
 
 }
 
+// Bonus
+// ======Do what it says function: =========
+// Works with "spotify-this-song" and "movie-this" commands
 
+
+function appendToFile(data){
+
+ fs.appendFile("log.txt", JSON.stringify(data), function(err) {
+
+				// If an error was experienced we say it.
+				if (!err) {
+					console.log("Data has been added to the log.txt file");
+				}
+				// If no error is experienced, we'll log the phrase "Content Added" to our node console.
+				else {
+					console.log("Error: " + err);
+					
+				}
+			});
+}
