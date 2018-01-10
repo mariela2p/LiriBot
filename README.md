@@ -8,6 +8,8 @@ LIRI is a _Language_ Interpretation and Recognition Interface, command line node
 
    * This will show your last 20 tweets and when they were created at in the terminal/bash window.
    
+   ![tweets](https://user-images.githubusercontent.com/31390306/34796422-794b92aa-f623-11e7-936d-9591cbd592d0.png)
+   
 2. `node liri.js spotify-this-song '<song name here>'`
 
    * This shows the following information about the song in the terminal/bash window
@@ -22,9 +24,13 @@ LIRI is a _Language_ Interpretation and Recognition Interface, command line node
 
    * If no song is provided then your program will default to "The Sign" by Ace of Base.
    
+   ![spotify](https://user-images.githubusercontent.com/31390306/34796424-7d85b9c2-f623-11e7-83c3-66e94d3e0c32.png)
+   
+   
 3. `node liri.js movie-this '<movie name here>'`
 
    * This outputs the following information to the terminal/bash window:
+   
 
      ```
        * Title of the movie.
@@ -36,8 +42,12 @@ LIRI is a _Language_ Interpretation and Recognition Interface, command line node
        * Plot of the movie.
        * Actors in the movie.
      ```
+    
 
-   * If the user doesn't type a movie in, the program outputs data for the movie 'Mr. Nobody.'
+![movie](https://user-images.githubusercontent.com/31390306/34796426-7f62755a-f623-11e7-913f-fe53b5f26881.png)
+
+ * If the user doesn't type a movie in, the program will output data for the movie 'Mr. Nobody.'
+   
 
 4. `node liri.js do-what-it-says`
    
@@ -45,3 +55,7 @@ LIRI is a _Language_ Interpretation and Recognition Interface, command line node
      
      * It should run `spotify-this-song` for "I Want it That Way," as follows the text in `random.txt`
      
+![doit](https://user-images.githubusercontent.com/31390306/34796433-836a5852-f623-11e7-92d4-0e5d6da52d4c.png)
+
+![wrong](https://user-images.githubusercontent.com/31390306/34796430-811d7994-f623-11e7-9254-1c9815b41366.png)
+
