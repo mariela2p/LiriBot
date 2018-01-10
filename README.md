@@ -36,8 +36,10 @@ LIRI is a _Language_ Interpretation and Recognition Interface, command line node
        * Language of the movie.
        * Plot of the movie.
        * Actors in the movie.
-  
-    
+       
+     
+![movies](https://user-images.githubusercontent.com/31390306/34798159-f4f6b39e-f628-11e7-89be-1e0b6de1b1c5.png)
+
 
  * If the user doesn't type a movie in, the program will output data for the movie 'Mr. Nobody.'
    
