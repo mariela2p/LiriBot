@@ -163,6 +163,26 @@ function movieThis(){
 
 function doWhatItSays(){
 
+var fs = require("fs");
+
+fs.readFile("random.txt", "utf8", function(error, data){
+			if (!error) {
+				var splitArray = data.split(',');
+
+				//command = splitArray[0];
+				userInput = splitArray[1];
+
+				//console.log(command);
+				//console.log(userInput);
+
+				spotifyThisSong();
+
+			} else {
+				console.log("Error: " + error);
+			}
+		});
+
+
 }
 
 
