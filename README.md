@@ -8,8 +8,9 @@ LIRI is a _Language_ Interpretation and Recognition Interface, command line node
 
    * This will show your last 20 tweets and when they were created at in the terminal/bash window.
    
-   ![tweets](https://user-images.githubusercontent.com/31390306/34796422-794b92aa-f623-11e7-936d-9591cbd592d0.png)
-   
+   ![tweets](https://user-images.githubusercontent.com/31390306/34797398-417cd386-f626-11e7-898b-e100c9c4cf18.png)
+
+
 2. `node liri.js spotify-this-song '<song name here>'`
 
    * This shows the following information about the song in the terminal/bash window
@@ -44,6 +45,7 @@ LIRI is a _Language_ Interpretation and Recognition Interface, command line node
 
 ![movie](https://user-images.githubusercontent.com/31390306/34796426-7f62755a-f623-11e7-913f-fe53b5f26881.png)
 
+
  * If the user doesn't type a movie in, the program will output data for the movie 'Mr. Nobody.'
    
 
@@ -55,7 +57,10 @@ LIRI is a _Language_ Interpretation and Recognition Interface, command line node
      
 ![doit](https://user-images.githubusercontent.com/31390306/34796433-836a5852-f623-11e7-92d4-0e5d6da52d4c.png)
 
-5. If a wrong command is typed, then the he terminal/bash window shows the commands that can be used.
 
-![wrong](https://user-images.githubusercontent.com/31390306/34796430-811d7994-f623-11e7-9254-1c9815b41366.png)
+5. If a wrong command is typed, then the he terminal/bash window shows the commands that can be used
+
+![wrong](https://user-images.githubusercontent.com/31390306/34797500-8a48633c-f626-11e7-8e28-10a771257c38.png)
+
+
 
