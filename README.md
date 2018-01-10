@@ -31,8 +31,6 @@ LIRI is a _Language_ Interpretation and Recognition Interface, command line node
 
    * This outputs the following information to the terminal/bash window:
    
-
-     ```
        * Title of the movie.
        * Year the movie came out.
        * IMDB Rating of the movie.
@@ -41,7 +39,7 @@ LIRI is a _Language_ Interpretation and Recognition Interface, command line node
        * Language of the movie.
        * Plot of the movie.
        * Actors in the movie.
-     ```
+  
     
 
 ![movie](https://user-images.githubusercontent.com/31390306/34796426-7f62755a-f623-11e7-913f-fe53b5f26881.png)
@@ -56,6 +54,8 @@ LIRI is a _Language_ Interpretation and Recognition Interface, command line node
      * It should run `spotify-this-song` for "I Want it That Way," as follows the text in `random.txt`
      
 ![doit](https://user-images.githubusercontent.com/31390306/34796433-836a5852-f623-11e7-92d4-0e5d6da52d4c.png)
+
+5. If a wrong command is typed, then the he terminal/bash window shows the commands that can be used.
 
 ![wrong](https://user-images.githubusercontent.com/31390306/34796430-811d7994-f623-11e7-9254-1c9815b41366.png)
 
